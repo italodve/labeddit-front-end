@@ -20,7 +20,7 @@ import { useState } from "react";
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-const [ form, onChangeInputs ] = useForm ({
+const [ form, onChangeInputs, clearInputs ] = useForm ({
   email:"",
   password: ""
 
@@ -61,7 +61,7 @@ setIsPasswordValid(/.{6,}/.test(form.password));
         <p> O projeto de rede social da labenu</p>
        <EmailInput value={form.email} onChange={onChangeInputs} isValid={isEmailValid}/>
    <PasswordInput value={form.password} onChange={onChangeInputs} isValid={isPasswordValid}/>
-    <Button variant='form' type="submit" >Continuar</Button>
+    <Button disabled={isLoading} variant='form' type="submit" >Continuar</Button>
     <Button as="a" variant="form2" type="button" >Crie uma conta</Button>
     <Divider  height='2px' orientation='horizontal' />
     </form>
