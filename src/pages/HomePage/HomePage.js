@@ -7,6 +7,7 @@ import { goToLoginPage } from "../../routes/coordinator";
 import { GlobalContext } from "../../contexts/GlobalContex";
 import { Button, Divider, Textarea } from "@chakra-ui/react";
 import styled from "styled-components";
+import { Header } from "../../components/Header";
 
 const PostPageContainer = styled.div `
 hr{
@@ -85,7 +86,10 @@ export default function HomePage() {
   };
 
   return (
+  <>
+    <Header/>
     <PostPageContainer>
+
       <section>
         <form onSubmit={createPost}>
           <section>
@@ -103,5 +107,6 @@ export default function HomePage() {
         })}
       </PostsContainer>
     </PostPageContainer>
+    </>
   );
 }

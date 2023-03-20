@@ -86,7 +86,7 @@ p{
 position: relative;
 
 left: 3vw;
-top: -27vh;
+top: -22vh;
     
 font-family: 'IBM Plex Sans';
 font-style: normal;

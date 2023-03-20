@@ -9,6 +9,7 @@ import {theme} from './styles'
 export default function App() {
   const [posts, setPosts] = useState([]);
 
+
   useEffect(() => {
     const token = window.localStorage.getItem(TOKEN_NAME);
 
@@ -16,7 +17,7 @@ export default function App() {
       fetchPosts();
     }
   }, []);
-
+  
   const fetchPosts = async () => {
     try {
       const token = window.localStorage.getItem(TOKEN_NAME);
@@ -35,10 +36,13 @@ export default function App() {
       window.alert(error?.response?.data)
     }
   };
+  
 
   const context = {
     posts,
     fetchPosts
+    
+    
   };
 
   return (

@@ -13,3 +13,24 @@ export const Signup = async (body) => {
     const { data } = await axios.post(`${BASE_URL}/users/signup`, body)
     return data;
 }
+
+export const GetPost = async (id) => {
+    const { data } = await axios.get(`${BASE_URL}/posts/${id}`,
+        {
+            headers: {
+                Authorization: localStorage.getItem(TOKEN_NAME)
+            }
+        }
+    );
+    return data;
+}
+export const GetReplys = async (id) => {
+    const { data } = await axios.get(`${BASE_URL}/replys/${id}`,
+        {
+            headers: {
+                Authorization: localStorage.getItem(TOKEN_NAME)
+            }
+        }
+    );
+    return data;
+}

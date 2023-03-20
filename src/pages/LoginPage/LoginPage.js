@@ -4,7 +4,7 @@ import { TOKEN_NAME } from "../../constants";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/Group 1.png";
-import { goToHomePage } from "../../routes/coordinator";
+import { goToHomePage, goToSignupPage } from "../../routes/coordinator";
 import { useForm } from "../../hooks";
 import { EmailInput } from "../../components/inputs/email";
 import { PasswordInput } from "../../components/inputs";
@@ -52,6 +52,10 @@ setIsPasswordValid(/.{6,}/.test(form.password));
     window.alert(error?.response?.data)
   }
 };
+const  signupGo =  () => { 
+  goToSignupPage(navigate);
+}
+
 
   return (
     <LFormContainer>
@@ -62,7 +66,7 @@ setIsPasswordValid(/.{6,}/.test(form.password));
        <EmailInput value={form.email} onChange={onChangeInputs} isValid={isEmailValid}/>
    <PasswordInput value={form.password} onChange={onChangeInputs} isValid={isPasswordValid}/>
     <Button disabled={isLoading} variant='form' type="submit" >Continuar</Button>
-    <Button as="a" variant="form2" type="button" >Crie uma conta</Button>
+    <Button onClick={signupGo}  as="a" variant="form2" type="button" >Crie uma conta</Button>
     <Divider  height='2px' orientation='horizontal' />
     </form>
       </FormContainer>

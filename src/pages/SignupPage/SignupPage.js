@@ -12,7 +12,7 @@ import {
   Checkbox,
   Button,
 } from '@chakra-ui/react'
-
+import { Header } from "../../components/Header";
 import { Signup } from "../../constants";
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -47,6 +47,8 @@ try {
 }
 
   return (
+    <>
+    <Header/>
     <PageContainer>
       <FormContainer >
         
@@ -67,5 +69,6 @@ try {
     </form>
       </FormContainer>
     </PageContainer>
+    </>
   )
 }

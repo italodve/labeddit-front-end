@@ -2,11 +2,9 @@ import axios from "axios";
 import { Button } from "@chakra-ui/react";
 import { createIcon } from '@chakra-ui/icons'
 import { useContext, useState } from "react";
-import { BASE_URL, TOKEN_NAME } from "../constants/index";
+import { BASE_URL, GetReplys, TOKEN_NAME } from "../constants/index";
 import { GlobalContext } from "../contexts/GlobalContex";
 import styled from "styled-components";
-import { goToDetailsPage } from "../routes/coordinator";
-import { useNavigate } from "react-router-dom";
 
  export const UpDownIcon = createIcon({
   displayName: 'UpDownIcon',
@@ -71,18 +69,12 @@ div{
 
 }
 `;
-
-
-export default function PostCard(props) {
-  const navigate = useNavigate();
-  const { post } = props;
-
-  const context = useContext(GlobalContext);
-  const { fetchPosts } = context;
+export default function ReplyCard(props) {
+  const { reply, setReply } = props;
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const like = async () => {
+  const likeReply = async () => {
     setIsLoading(true)
 
     try {
@@ -98,17 +90,21 @@ export default function PostCard(props) {
         like: true
       }
 
-      await axios.put(BASE_URL + `/posts/${post.id}/like`, body, config);
+      await axios.put(BASE_URL + `/replys/${reply.id}/like`, body, config);
 
       setIsLoading(false)
-      fetchPosts()
+      GetReplys(reply.post_id)
+      .then(data => {
+        setReply(data);
+       })
+   
     } catch (error) {
       console.error(error?.response?.data);
       window.alert(error?.response?.data)
     }
   };
   
-  const dislike = async () => {
+  const dislikeReply = async () => {
     setIsLoading(true)
 
     try {
@@ -124,38 +120,35 @@ export default function PostCard(props) {
         like: false
       }
 
-      await axios.put(BASE_URL + `/posts/${post.id}/like`, body, config);
+      await axios.put(BASE_URL + `/replys/${reply.id}/like`, body, config);
 
       setIsLoading(false)
-      fetchPosts()
+      GetReplys(reply.post_id)
+      .then(data => {
+        setReply(data);
+       })
     } catch (error) {
       console.error(error?.response?.data);
       window.alert(error?.response?.data)
     }
   };
-const onClickCard = (id) => {
-goToDetailsPage(navigate,id)
-};
+
 
   return (
-    <PostCardContainer  >
-    <p>Enviado por: {post.creator.name}</p>
+    <PostCardContainer>
+    <p>Enviado por: {reply.creator.name}</p>
       <h1>
-        {post.content}
+        {reply.content}
     
      </h1>
    <div>
       <span>
-      <Button  onClick={like} leftIcon={<UpDownIcon />} colorScheme='white' size='md' variant='solid'>
+      <Button  onClick={likeReply} leftIcon={<UpDownIcon />} colorScheme='white' size='md' variant='solid'>
   </Button>
-  {post.likes}
-  <Button  onClick={dislike} leftIcon={<DislikeIcon />} colorScheme='white' size='md' variant='solid'>
+  {reply.likes}
+  <Button  onClick={dislikeReply} leftIcon={<DislikeIcon />} colorScheme='white' size='md' variant='solid'>
   </Button>
-  {post.dislike}
-  <Button onClick={() => onClickCard(post.id)}   leftIcon={<CommentsIcon />} colorScheme='white' size='md' variant='solid'>
-  </Button>
-  {post.replys}
-
+  {reply.dislike}
           </span>
 
   </div>
