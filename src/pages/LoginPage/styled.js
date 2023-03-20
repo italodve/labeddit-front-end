@@ -70,6 +70,14 @@ font-size: 16px;
 line-height: 21px;
    
 }
+p{
+    margin-bottom: 100px;
+}
+@media only screen and (min-width: 800px) {
+    p {
+       margin-left: 25%;
+    }
+  }
 `;
 export const LFormContainer = styled.div `
 height: 88vh;

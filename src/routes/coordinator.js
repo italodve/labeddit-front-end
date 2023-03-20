@@ -10,10 +10,7 @@ export const goToLoginPage = (navigate) => {
   navigate("/login");
 };
 
-export const goToDetailsPage = (navigate, recipeId) => {
-  navigate(`/recipe/${recipeId}`);
+export const goToDetailsPage = (navigate, id) => {
+  navigate(`/post/${id}`);
 };
 
-export const goToCreateRecipePage = (navigate) => {
-  navigate("/recipe/new");
-};
