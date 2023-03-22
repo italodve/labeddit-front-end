@@ -8,6 +8,8 @@ import { Header } from "../../components/Header";
 import { GetPost } from "../../constants/index";
 import { CommentsIcon,UpDownIcon,DislikeIcon } from "../../components/PostCard";
 import ReplyCard from "../../components/ReplyCard";
+import { goToLoginPage } from "../../routes/coordinator";
+import { useNavigate } from "react-router-dom";
 const PostPageContainer = styled.div `
 hr{
     margin-top: 32px;
@@ -66,6 +68,8 @@ color: #6F6F6F;
 `;
 
  export default function PostPage () {
+  const navigate = useNavigate();
+
   const [replys, setReply ] = useState();
     const [post, setPost ] = useState();
     const { id } = useParams();  
@@ -79,20 +83,23 @@ color: #6F6F6F;
           }, []);
     
       useEffect(() => {
+        const token = window.localStorage.getItem(TOKEN_NAME);
+
+        if (!token) {
+          goToLoginPage(navigate);
+        } else {
     GetPost(id)
         .then(post => {
             setPost(post.post);
       })
+      GetReplys(id)
+      .then(data => {
+       setReply(data);
+      })
         .catch(e => alert(e.response.data.message))
+    }
       }, []);
-      
-  useEffect(() => {
-   GetReplys(id)
-   .then(data => {
-    setReply(data);
-   })
-   .catch(e => alert(e.response.data.message))
-  }, []);
+    
   
 
   const like = async () => {
