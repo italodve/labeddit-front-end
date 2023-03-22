@@ -1,9 +1,8 @@
 import axios from "axios";
 import { Button } from "@chakra-ui/react";
 import { createIcon } from '@chakra-ui/icons'
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { BASE_URL, GetReplys, TOKEN_NAME } from "../constants/index";
-import { GlobalContext } from "../contexts/GlobalContex";
 import styled from "styled-components";
 
  export const UpDownIcon = createIcon({
