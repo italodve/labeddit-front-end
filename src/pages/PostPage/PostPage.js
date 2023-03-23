@@ -70,16 +70,18 @@ color: #6F6F6F;
  export default function PostPage () {
   const navigate = useNavigate();
 
-  const [replys, setReply ] = useState();
+  const [replys, setReplys ] = useState();
     const [post, setPost ] = useState();
     const { id } = useParams();  
   const [isLoading, setIsLoading] = useState(false)
   const [postContent, setPostContent] = useState("")
-    useEffect(() => {
-        GetPost(id)
-            .then(post => console.log(post)
-            )
-            .catch(e => alert(e.response.data.message))
+    
+  useEffect(() => {
+      GetReplys(id)
+      .then(replys => {
+       setReplys(replys);
+      })
+        .catch(e => alert(e.response.data.message))
           }, []);
     
       useEffect(() => {
@@ -92,10 +94,7 @@ color: #6F6F6F;
         .then(post => {
             setPost(post.post);
       })
-      GetReplys(id)
-      .then(data => {
-       setReply(data);
-      })
+    
         .catch(e => alert(e.response.data.message))
     }
       }, []);
@@ -210,7 +209,7 @@ color: #6F6F6F;
       setIsLoading(false)
       GetReplys(post.id)
     .then(data => {
-      setReply(data);
+      setReplys(data);
     })
     AddReply(post.id)
     } catch (error) {
@@ -261,7 +260,7 @@ color: #6F6F6F;
 <PostsContainer>
 <PostsContainer>
 {replys.map((reply) => {
-          return <ReplyCard key={reply.id} reply={reply} setReply={setReply}  />;
+          return <ReplyCard key={reply.id} reply={reply} setReplys={setReplys}  />;
         })}
       </PostsContainer>
     </PostsContainer>

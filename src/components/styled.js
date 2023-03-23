@@ -11,10 +11,7 @@ background-color: #EDEDED;
  
  
 img {
-    margin-left: 50%;
+ margin-left: 47vw;
 }
 
-    
- 
-    
 `;
