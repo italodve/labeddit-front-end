@@ -69,7 +69,7 @@ div{
 }
 `;
 export default function ReplyCard(props) {
-  const { reply, setReply } = props;
+  const { reply, setReplys } = props;
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -93,8 +93,8 @@ export default function ReplyCard(props) {
 
       setIsLoading(false)
       GetReplys(reply.post_id)
-      .then(data => {
-        setReply(data);
+      .then(reply => {
+        setReplys(reply);
        })
    
     } catch (error) {
@@ -123,8 +123,8 @@ export default function ReplyCard(props) {
 
       setIsLoading(false)
       GetReplys(reply.post_id)
-      .then(data => {
-        setReply(data);
+      .then(reply => {
+        setReplys(reply);
        })
     } catch (error) {
       console.error(error?.response?.data);

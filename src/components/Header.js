@@ -25,13 +25,11 @@ export const Header = () => {
     return (
         <HeaderStyled>
             <img src={logo} alt="logo"/>
-            
             {location.pathname === "/signup"?
             <Button colorScheme='blue' variant='ghost' onClick={login}>Entrar</Button> 
             :
             <Button  rightIcon colorScheme='blue' variant='ghost' onClick={logout}>logout</Button>
               } 
-              
         </HeaderStyled>
     );
 }

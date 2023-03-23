@@ -41,8 +41,6 @@ export default function App() {
   const context = {
     posts,
     fetchPosts
-    
-    
   };
 
   return (
