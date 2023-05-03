@@ -12,7 +12,7 @@ import { FormContainer, LFormContainer} from "./styled";
 import { Divider } from '@chakra-ui/react'
 import {
   
-  Button,
+  Button
 } from '@chakra-ui/react'
 import { useState } from "react";
 
@@ -60,12 +60,15 @@ const  signupGo =  () => {
   return (
     <LFormContainer>
       <FormContainer>
-        <form onSubmit={onSubmit}>
+        <form   onSubmit={onSubmit}>
         <img src={logo} alt="logo labbedit"/>
         <p> O projeto de rede social da labenu</p>
        <EmailInput value={form.email} onChange={onChangeInputs} isValid={isEmailValid}/>
    <PasswordInput value={form.password} onChange={onChangeInputs} isValid={isPasswordValid}/>
-    <Button disabled={isLoading} variant='form' type="submit" >Continuar</Button>
+    <Button  isLoading={isLoading}
+    loadingText='Submitting'
+    
+     variant='form' type="submit" >Continuar</Button>
     <Button onClick={signupGo}  as="a" variant="form2" type="button" >Crie uma conta</Button>
     <Divider  height='2px' orientation='horizontal' />
     </form>
