@@ -75,31 +75,24 @@ color: #6F6F6F;
     const { id } = useParams();  
   const [isLoading, setIsLoading] = useState(false)
   const [postContent, setPostContent] = useState("")
-    
   useEffect(() => {
-      GetReplys(id)
-      .then(replys => {
-       setReplys(replys);
-      })
-        .catch(e => alert(e.response.data.message))
-          }, []);
-    
-      useEffect(() => {
-        const token = window.localStorage.getItem(TOKEN_NAME);
+    const token = window.localStorage.getItem(TOKEN_NAME);
 
-        if (!token) {
-          goToLoginPage(navigate);
-        } else {
-    GetPost(id)
-        .then(post => {
-            setPost(post.post);
-      })
-    
-        .catch(e => alert(e.response.data.message))
-    }
-      }, []);
-    
+    if (!token) {
+      goToLoginPage(navigate);
+    } else {
+GetPost(id)
+    .then(post => {
+        setPost(post.post);
+  })
+  GetReplys(id)
+  .then(replys => {
+   setReplys(replys);
+  })
   
+    .catch(e => alert(e.response.data.message))
+}
+  }, [id]);
 
   const like = async () => {
     setIsLoading(true)
@@ -220,7 +213,7 @@ color: #6F6F6F;
 
   
     return(
-        !post ? <h1>post não existe</h1> : (
+        !post ? <h1>post não existe</h1> :  !replys? <h1>reply não existe</h1> :(
 
         <>
         <Header/>
@@ -257,17 +250,16 @@ color: #6F6F6F;
         </form>
       </section>
       <Divider  height='2px' orientation='horizontal' />
+      
 <PostsContainer>
-<PostsContainer>
+  
 {replys.map((reply) => {
           return <ReplyCard key={reply.id} reply={reply} setReplys={setReplys}  />;
         })}
       </PostsContainer>
-    </PostsContainer>
+
     </PostPageContainer>
         </>
         )
-           
     )
-
  }
