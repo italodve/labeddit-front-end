@@ -42,7 +42,7 @@ try {
   localStorage.setItem("labefy-token", token)
   goToHomePage(navigate)
   }catch(e) {
-    alert(e.response.data.message)
+    window.alert(e?.response?.data)
   }
 }
 
