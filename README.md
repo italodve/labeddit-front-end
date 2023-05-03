@@ -2,7 +2,7 @@
 
 ### Projeto Web Full Stack desenvolvido no Bootcamp Labenu onde o usuário tem acesso a uma rede social, Dentro da aplicação você poderá criar seu cadastro e interagir com as publicações (curtir, comentar, editar) de outros usuários consumindo uma api deployada
 
-## Link do site do projeto: https://labeddit-front-end.surge.sh/login
+## Link do site do projeto: https://labeddit-front-end-inky.vercel.app/login
 ## Back end do projeto https://github.com/italodve/Labeddit-Back-End
 
 ## 📒 libs Utilizadas 
