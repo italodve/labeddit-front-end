@@ -146,10 +146,10 @@ goToDetailsPage(navigate,id)
      </h1>
    <div>
       <span>
-      <Button  onClick={like} leftIcon={<UpDownIcon />} colorScheme='white' size='md' variant='solid'>
+      <Button disabled={isLoading} onClick={like} leftIcon={<UpDownIcon />} colorScheme='white' size='md' variant='solid'>
   </Button>
   {post.likes}
-  <Button  onClick={dislike} leftIcon={<DislikeIcon />} colorScheme='white' size='md' variant='solid'>
+  <Button disabled={isLoading} onClick={dislike} leftIcon={<DislikeIcon />} colorScheme='white' size='md' variant='solid'>
   </Button>
   {post.dislike}
   <Button onClick={() => onClickCard(post.id)}   leftIcon={<CommentsIcon />} colorScheme='white' size='md' variant='solid'>

@@ -142,10 +142,10 @@ export default function ReplyCard(props) {
      </h1>
    <div>
       <span>
-      <Button  onClick={likeReply} leftIcon={<UpDownIcon />} colorScheme='white' size='md' variant='solid'>
+      <Button disabled={isLoading}  onClick={likeReply} leftIcon={<UpDownIcon />} colorScheme='white' size='md' variant='solid'>
   </Button>
   {reply.likes}
-  <Button  onClick={dislikeReply} leftIcon={<DislikeIcon />} colorScheme='white' size='md' variant='solid'>
+  <Button disabled={isLoading} onClick={dislikeReply} leftIcon={<DislikeIcon />} colorScheme='white' size='md' variant='solid'>
   </Button>
   {reply.dislike}
           </span>
