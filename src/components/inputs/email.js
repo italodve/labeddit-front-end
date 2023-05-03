@@ -9,7 +9,7 @@ import {
 export const EmailInput =  ({ isValid, value, onChange }) => {
     return(
 <FormControl isInvalid={!isValid}>
-<Input name="email"  value={value} onChange={onChange} placeholder="E-mail"/>
+<Input name="email"  required value={value} onChange={onChange} placeholder="E-mail"/>
 {!isValid ? (
   <FormErrorMessage>Email invalido.</FormErrorMessage>
 ): undefined}

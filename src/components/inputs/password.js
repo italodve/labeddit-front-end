@@ -16,7 +16,7 @@ import {
     return(
 <FormControl isInvalid={!isValid}>
 <InputGroup size='md'>
-  <Input 
+  <Input  required
   name="password"
   value={value}
   onChange={onChange}
