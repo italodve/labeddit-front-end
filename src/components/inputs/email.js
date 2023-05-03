@@ -2,8 +2,7 @@
 import {
     FormControl,
     Input,
-
-    FormErrorMessage,
+    FormErrorMessage
     
   } from '@chakra-ui/react'
 
@@ -12,7 +11,6 @@ export const EmailInput =  ({ isValid, value, onChange }) => {
 <FormControl isInvalid={!isValid}>
 <Input name="email"  value={value} onChange={onChange} placeholder="E-mail"/>
 {!isValid ? (
- 
   <FormErrorMessage>Email invalido.</FormErrorMessage>
 ): undefined}
 
