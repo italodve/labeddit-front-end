@@ -63,7 +63,7 @@ const  signupGo =  () => {
         <form   onSubmit={onSubmit}>
         <img src={logo} alt="logo labbedit"/>
         <p> O projeto de rede social da labenu</p>
-       <EmailInput value={form.email} onChange={onChangeInputs} isValid={isEmailValid}/>
+       <EmailInput value={form.email} required onChange={onChangeInputs} isValid={isEmailValid}/>
    <PasswordInput value={form.password} onChange={onChangeInputs} isValid={isPasswordValid}/>
     <Button  isLoading={isLoading}
     loadingText='Submitting'
